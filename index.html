@@ -25,10 +25,12 @@
 <body class="bg-gradient-to-tr from-emerald-50 via-emerald-100 to-teal-50 text-slate-800 scroll-smooth">
   <!-- Encabezado y navegación -->
   <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center">
       <!-- Se actualizó el nombre para incluir el apellido y nombre completo -->
       <h1 class="text-lg font-bold text-teal-600">Martín Alonso Candil</h1>
-      <nav>
+      <!-- Agrupamos la navegación y los iconos para poder empujarlos juntos hacia la derecha -->
+      <div class="flex items-center ml-auto">
+        <nav class="ml-8">
         <!-- Navegación de escritorio -->
         <ul class="hidden md:flex space-x-6 text-sm font-medium">
           <li><a href="#sobre" class="hover:text-teal-600 nav-link">Sobre Mí</a></li>
@@ -45,31 +47,32 @@
         </button>
       </nav>
 
-      <!-- Botones de redes sociales en la cabecera -->
-      <!-- Se eliminó la clase `hidden` para que sean visibles también en pantallas pequeñas -->
-      <div class="flex items-center space-x-4 mt-2 md:mt-0">
-        <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="header-social-button">
-          <!-- Icono de Instagram incrustado directamente para evitar dependencias externas -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="header-social-button">
-          <!-- Icono de Facebook incrustado directamente para evitar dependencias externas -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="header-social-button">
-          <!-- Icono de LinkedIn incrustado directamente para evitar dependencias externas -->
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect width="4" height="12" x="2" y="9"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-        </a>
+        <!-- Botones de redes sociales en la cabecera -->
+        <!-- Ajustado para que estén alineados con el contenido y visibles en todas las resoluciones -->
+        <div class="flex items-center space-x-4 ml-4">
+          <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="header-social-button">
+            <!-- Icono de Instagram incrustado directamente para evitar dependencias externas -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="header-social-button">
+            <!-- Icono de Facebook incrustado directamente para evitar dependencias externas -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="header-social-button">
+            <!-- Icono de LinkedIn incrustado directamente para evitar dependencias externas -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
     <!-- Panel de navegación móvil -->

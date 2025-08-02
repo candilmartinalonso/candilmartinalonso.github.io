@@ -78,8 +78,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #ecfdf5; /* tono claro de verde/teal */
-  color: #0f766e; /* tono oscuro de teal */
+  /* Fondo y color ajustados para mayor contraste y visibilidad */
+  background-color: #d1fae5; /* tono más saturado de verde/teal */
+  color: #065f46; /* tono más oscuro de teal */
   padding: 0.5rem;
   border-radius: 9999px;
   transition: background-color 0.3s, transform 0.3s;
