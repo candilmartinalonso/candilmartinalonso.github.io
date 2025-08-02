@@ -1,294 +1,533 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Martín Candil - Relaciones Laborales</title>
-    <meta name="description" content="Licenciado en Relaciones Laborales especializado en selección, gestión del talento y análisis de datos para eficiencia organizacional.">
-    <meta name="author" content="Martín Alonso Candil">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest" defer></script>
-    <style>
-        body {
-            font-family:'Inter',sans-serif;
-            background:linear-gradient(120deg,#f0fdfa 0%,#ccfbf1 100%);
-            background-attachment:fixed;color:#334155;opacity:0;animation:fadeInBody 1s ease-out forwards;
-        }
-        @keyframes fadeInBody {to{opacity:1;}}
-        #particles-bg{position:fixed;inset:0;pointer-events:none;z-index:-1;}
-        .particle{position:absolute;border-radius:50%;opacity:0;animation:particle-float 20s infinite linear,fadeInParticle 3s ease-out forwards;}
-        @keyframes fadeInParticle{to{opacity:.12;}}
-        .particle-1{width:60px;height:60px;left:10vw;top:20vh;background:#14b8a6;animation-delay:0s,.5s;}
-        .particle-2{width:40px;height:40px;left:50vw;top:70vh;background:#0d9488;animation-delay:8s,1s;}
-        .particle-3{width:80px;height:80px;left:80vw;top:10vh;background:#99f6e4;animation-delay:4s,1.5s;}
-        @keyframes particle-float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-35px) scale(1.07);}}
-        .animate-on-scroll{opacity:0;transform:translateY(30px);transition:opacity .6s cubic-bezier(.645,.045,.355,1),transform .8s cubic-bezier(.23,1,.32,1);}
-        .animate-on-scroll.is-visible{opacity:1;transform:translateY(0);}
-        .main-section{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .8s cubic-bezier(.23,1,.32,1),transform .8s cubic-bezier(.23,1,.32,1);}
-        .main-section.is-visible{opacity:1;transform:translateY(0) scale(1);}
-        #hero{background:linear-gradient(-45deg,#f0fdfa,#ccfbf1,#a7f3d0,#6ee7b7);background-size:400% 400%;animation:hero-gradient 15s ease infinite;position:relative;overflow:hidden;}
-        @keyframes hero-gradient{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
-        .cta-button{transition:transform .3s,box-shadow .3s;}
-        .cta-button:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 10px 20px rgba(20,184,166,.2);}
-        .cta-button.is-visible{animation:pulse-cta 2.5s infinite 1.5s;}
-        @keyframes pulse-cta{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(20,184,166,.7);}70%{transform:scale(1.02);box-shadow:0 0 0 12px rgba(20,184,166,0);}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(20,184,166,0);}}
-        h2.animate-on-scroll,h3.animate-on-scroll{transition:transform .3s,color .3s;}
-        h2.animate-on-scroll:hover,h3.animate-on-scroll:hover{transform:scale(1.05);color:#14b8a6;}
-        .timeline-line{background:linear-gradient(to bottom,#99f6e4,#2dd4bf);transform:scaleY(0);transform-origin:top;transition:transform 1s cubic-bezier(.645,.045,.355,1) .2s;}
-        .timeline-line.is-visible{transform:scaleY(1);}
-        .timeline-point{transform:scale(0);transition:transform .5s cubic-bezier(.175,.885,.32,1.275) .8s;}
-        .timeline-point.is-visible{transform:scale(1);}
-        .skill-icon-wrapper{transition:transform .3s,color .3s;}
-        .skill-icon-wrapper:hover{transform:scale(1.15) rotate(-8deg);}
-        .skill-icon-wrapper:hover .skill-icon{background-color:#ccfbf1;color:#0d9488;box-shadow:0 4px 15px rgba(13,148,136,.2);}
-        .skill-icon{transition:background-color .3s,color .3s,box-shadow .3s;}
-        .interactive-card{position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s cubic-bezier(.23,1,.32,1);}
-        .interactive-card:hover{transform:translateY(-10px);box-shadow:0 25px 50px -12px rgba(0,0,0,.15);}
-        .interactive-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),rgba(13,148,136,.15),transparent 40%);opacity:0;transition:opacity .5s;}
-        .interactive-card:hover::before{opacity:1;}
-        #scrollTopButton{position:fixed;bottom:25px;right:25px;z-index:1000;background:#fff;color:#0d9488;width:44px;height:44px;border-radius:9999px;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s,background-color .3s;cursor:pointer;visibility:hidden;}
-        #scrollTopButton.visible{opacity:1;transform:translateY(0);visibility:visible;}
-        #scrollTopButton:hover{background:#f0fdfa;transform:translateY(-3px) scale(1.1);}
-        .nav-link{position:relative;}
-        .nav-link::after{content:"";position:absolute;width:100%;height:2px;bottom:-6px;left:0;background:#14b8a6;transform:scaleX(0);transform-origin:bottom right;transition:transform .3s cubic-bezier(.23,1,.32,1);}
-        .nav-link:hover::after,.nav-link-active::after{transform:scaleX(1);transform-origin:bottom left;}
-        .nav-link-active{color:#0d9488!important;font-weight:600;}
-        .animated-underline{position:relative;text-decoration:none;display:inline-block;}
-        .animated-underline::after{content:"";position:absolute;width:100%;height:2px;bottom:-4px;left:0;background:#14b8a6;transform:scaleX(0);transform-origin:bottom right;transition:transform .4s cubic-bezier(.23,1,.32,1);}
-        .animated-underline:hover::after{transform:scaleX(1);transform-origin:bottom left;}
-        .social-icon{transition:transform .4s cubic-bezier(.23,1,.32,1),color .3s;}
-        .social-icon:hover{transform:rotate(-15deg) scale(1.2);color:#14b8a6!important;}
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martín Candil - Relaciones Laborales</title>
+  <meta
+    name="description"
+    content="Licenciado en Relaciones Laborales impulsando la eficiencia organizacional con estrategias innovadoras y gestión del talento."
+  />
+  <meta name="author" content="Martín Alonso Candil" />
+  <!-- Google Fonts for clean typography -->
+  <script type="text/javascript" nonce="e2fbdabe68b14df3b14f35b498c" src="//local.adguard.org?ts=1754134455846&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile-LzZG1p6CL9PVxj8J69qFZd%26ts%3D487260%26p%3Dfsns%26cid%3D1%26sig%3D55836477e5814682eaa36eaf43240826fe6760d34d5dedd3799a140eed454346&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-loc&amp;st-dnt"></script><script type="text/javascript" nonce="e2fbdabe68b14df3b14f35b498c" src="//local.adguard.org?ts=1754134455846&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com" />
+  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- TailwindCSS via CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide icons library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="text-slate-700 antialiased">
-    <div id="particles-bg"></div>
-    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-40 border-b border-gray-100/80">
-        <nav class="container mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-900 tracking-tight hover:scale-105">Martín Candil</a>
-            <div class="hidden md:flex items-center">
-                <div class="flex items-center space-x-8">
-                    <a href="#about" class="nav-link text-gray-500 hover:text-teal-600">Sobre Mí</a>
-                    <a href="#experiencia" class="nav-link text-gray-500 hover:text-teal-600">Experiencia</a>
-                    <a href="#habilidades" class="nav-link text-gray-500 hover:text-teal-600">Habilidades</a>
-                    <a href="#formacion" class="nav-link text-gray-500 hover:text-teal-600">Formación</a>
-                    <a href="#contacto" class="nav-link text-gray-500 hover:text-teal-600">Contacto</a>
-                </div>
-                <div class="h-6 w-px bg-gray-200 mx-6"></div>
-                <div class="flex items-center space-x-4">
-                    <a href="https://www.linkedin.com/in/martinalonsocandil" target="_blank" rel="noopener" aria-label="LinkedIn">
-                        <i data-lucide="linkedin" class="w-5 h-5 social-icon"></i>
-                    </a>
-                    <a href="https://www.instagram.com/candilmartinalonso" target="_blank" rel="noopener" aria-label="Instagram">
-                        <i data-lucide="instagram" class="w-5 h-5 social-icon"></i>
-                    </a>
-                    <a href="https://www.facebook.com/martinalonsocandil" target="_blank" rel="noopener" aria-label="Facebook">
-                        <i data-lucide="facebook" class="w-5 h-5 social-icon"></i>
-                    </a>
-                </div>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false"><i data-lucide="menu" class="w-6 h-6"></i></button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-white border-t border-gray-100">
-            <a href="#about" class="nav-link block py-2 text-gray-700">Sobre Mí</a>
-            <a href="#experiencia" class="nav-link block py-2 text-gray-700">Experiencia</a>
-            <a href="#habilidades" class="nav-link block py-2 text-gray-700">Habilidades</a>
-            <a href="#formacion" class="nav-link block py-2 text-gray-700">Formación</a>
-            <a href="#contacto" class="nav-link block py-2 text-gray-700">Contacto</a>
-            <div class="border-t border-gray-100 my-4"></div>
-            <div class="flex justify-center space-x-6">
-                <a href="https://www.linkedin.com/in/martinalonsocandil" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-6 h-6 social-icon"></i></a>
-                <a href="https://www.instagram.com/candilmartinalonso" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram" class="w-6 h-6 social-icon"></i></a>
-                <a href="https://www.facebook.com/martinalonsocandil" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook" class="w-6 h-6 social-icon"></i></a>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section id="hero" class="main-section">
-            <div class="shape shape-1"></div><div class="shape shape-2"></div>
-            <div class="container mx-auto px-6 py-28 md:py-40 text-center">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-teal-900 mb-5 animate-on-scroll">Licenciado en Relaciones Laborales</h1>
-                <p class="text-lg md:text-xl text-teal-800 mb-10 max-w-3xl mx-auto animate-on-scroll" style="transition-delay:200ms;">Impulsando la eficiencia organizacional con estrategias innovadoras y gestión del talento.</p>
-                <a href="#contacto" class="cta-button bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg animate-on-scroll" style="transition-delay:400ms;">Ponerse en contacto</a>
-            </div>
-        </section>
-        <section id="about" class="main-section py-20 md:py-32 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 animate-on-scroll">Sobre Mí</h2>
-                    <div class="text-base md:text-lg text-gray-700 leading-relaxed space-y-5">
-                        <p class="animate-on-scroll" style="transition-delay:150ms;">¡Hola! Soy Martín, Licenciado en Relaciones Laborales apasionado por la intersección entre el talento humano y los objetivos de negocio. Mi carrera se ha enfocado en diseñar procesos eficientes y humanos.</p>
-                        <p class="animate-on-scroll" style="transition-delay:300ms;">Me especializo en el ciclo completo de vida del empleado, desde la atracción y selección de talento hasta la gestión y administración de las relaciones laborales.</p>
-                        <p class="animate-on-scroll" style="transition-delay:450ms;">Con experiencia en diversos sectores, mi objetivo es crear soluciones que aporten valor tangible y potencien el crecimiento organizacional.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="experiencia" class="main-section py-20 md:py-32 bg-gray-50/70 border-y border-gray-100/80">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center animate-on-scroll">Experiencia Profesional</h2>
-                <div class="relative max-w-3xl mx-auto">
-                    <div class="absolute left-1.5 h-full w-0.5 timeline-line"></div>
-                    <div class="relative pl-10 pb-16 animate-on-scroll">
-                        <div class="absolute -left-1.5 top-1 w-4 h-4 bg-white border-2 border-teal-500 rounded-full timeline-point"></div>
-                        <p class="text-sm text-teal-600 font-semibold mb-1">Jul 2023 - Feb 2024</p>
-                        <h3 class="text-xl font-semibold text-gray-900">Responsable de RRHH</h3>
-                        <p class="text-gray-600 mb-3">Dental Brackets</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-base">
-                            <li>Coordinación integral del área, definiendo políticas y procedimientos.</li>
-                            <li>Gestión completa de administración de personal: altas, bajas, contratos, legajos.</li>
-                            <li>Supervisión y control de liquidación de sueldos (CCT 130/75), reduciendo errores.</li>
-                            <li>Manejo de relaciones laborales y resolución de conflictos.</li>
-                        </ul>
-                    </div>
-                    <div class="relative pl-10 pb-16 animate-on-scroll" style="transition-delay:150ms;">
-                        <div class="absolute -left-1.5 top-1 w-4 h-4 bg-white border-2 border-teal-500 rounded-full timeline-point"></div>
-                        <p class="text-sm text-teal-600 font-semibold mb-1">Sep 2022 - Jul 2023</p>
-                        <h3 class="text-xl font-semibold text-gray-900">Analista de RRHH</h3>
-                        <p class="text-gray-600 mb-3">Priority Home Care</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-base">
-                            <li>Lideré procesos de reclutamiento y selección, reduciendo el tiempo de contratación.</li>
-                            <li>Implementé programa de onboarding, mejorando integración y retención.</li>
-                            <li>Análisis de datos de RRHH para decisiones estratégicas.</li>
-                            <li>Colaboré en la gestión de desempeño y capacitación.</li>
-                        </ul>
-                    </div>
-                    <div class="relative pl-10 pb-16 animate-on-scroll" style="transition-delay:300ms;">
-                        <div class="absolute -left-1.5 top-1 w-4 h-4 bg-white border-2 border-teal-500 rounded-full timeline-point"></div>
-                        <p class="text-sm text-teal-600 font-semibold mb-1">Ene 2022 - Abr 2022</p>
-                        <h3 class="text-xl font-semibold text-gray-900">Analista de RRHH</h3>
-                        <p class="text-gray-600 mb-3">South America Implants</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-base">
-                            <li>Analicé datos de RRHH para estrategias de retención.</li>
-                            <li>Rediseñé procesos clave para mayor eficiencia operativa.</li>
-                            <li>Participé en comunicación interna y eventos corporativos.</li>
-                        </ul>
-                    </div>
-                    <div class="relative pl-10 pb-16 animate-on-scroll" style="transition-delay:450ms;">
-                        <div class="absolute -left-1.5 top-1 w-4 h-4 bg-white border-2 border-teal-500 rounded-full timeline-point"></div>
-                        <p class="text-sm text-teal-600 font-semibold mb-1">Dic 2020 - May 2021</p>
-                        <h3 class="text-xl font-semibold text-gray-900">Analista de RRHH</h3>
-                        <p class="text-gray-600 mb-3">Country Golf El Sosiego</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-base">
-                            <li>Gestión de recursos humanos, reclutamiento y selección.</li>
-                            <li>Manejo de relaciones laborales y aplicación del CCT 736/16.</li>
-                            <li>Administración de personal y control de ausentismo.</li>
-                        </ul>
-                    </div>
-                    <div class="relative pl-10 animate-on-scroll" style="transition-delay:600ms;">
-                        <div class="absolute -left-1.5 top-1 w-4 h-4 bg-white border-2 border-teal-500 rounded-full timeline-point"></div>
-                        <p class="text-sm text-teal-600 font-semibold mb-1">Mar 2015 - Dic 2019</p>
-                        <h3 class="text-xl font-semibold text-gray-900">Capacitador</h3>
-                        <p class="text-gray-600 mb-3">La Veneciana</p>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-base">
-                            <li>Desarrollé enfoque en atención al cliente, aumentando satisfacción y lealtad.</li>
-                            <li>Diseñé y dicté capacitaciones sobre productos y ventas.</li>
-                            <li>Mejoré rendimiento y productividad del equipo.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="habilidades" class="main-section py-20 md:py-32 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center animate-on-scroll">Habilidades Clave</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 text-center">
-                    <div class="animate-on-scroll skill-icon-wrapper">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="users" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Reclutamiento</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:100ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="scale" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Legislación</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:200ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="handshake" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Negociación</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:300ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="file-spreadsheet" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Excel</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:400ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="megaphone" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Marketing Digital</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:500ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="languages" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Inglés</h3>
-                    </div>
-                    <div class="animate-on-scroll skill-icon-wrapper" style="transition-delay:600ms;">
-                        <div class="skill-icon bg-teal-50 text-teal-700 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"><i data-lucide="swords" class="w-10 h-10"></i></div>
-                        <h3 class="font-semibold">Resolución de Conflictos</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="formacion" class="main-section py-20 md:py-32 bg-gray-50/70 border-y border-gray-100/80">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-16 text-center animate-on-scroll">Formación Académica</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="interactive-card bg-white p-8 rounded-lg border border-gray-200 animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Licenciatura en Relaciones Laborales</h3>
-                        <p class="text-sm text-gray-500">UNLZ (2014 - 2023)</p>
-                    </div>
-                    <div class="interactive-card bg-white p-8 rounded-lg border border-gray-200 animate-on-scroll" style="transition-delay:150ms;">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Marketing Digital</h3>
-                        <p class="text-sm text-gray-500">Academia Numen (2023 - 2024)</p>
-                    </div>
-                    <div class="interactive-card bg-white p-8 rounded-lg border border-gray-200 animate-on-scroll" style="transition-delay:300ms;">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Excel Avanzado</h3>
-                        <p class="text-sm text-gray-500">IAC (2018 - 2019)</p>
-                    </div>
-                    <div class="interactive-card bg-white p-8 rounded-lg border border-gray-200 animate-on-scroll" style="transition-delay:450ms;">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Liquidación de Sueldos</h3>
-                        <p class="text-sm text-gray-500">UNLa (2014 - 2015)</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- CONTACTO SOLO CORREO -->
-        <section id="contacto" class="main-section bg-white">
-            <div class="container mx-auto px-6 py-28 text-center">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4 animate-on-scroll">Contacto</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-8 animate-on-scroll" style="transition-delay:150ms;">
-                    ¿Querés ponerte en contacto? Escribime a <br>
-                    <a href="mailto:candilmartinalonso@gmail.com" class="text-xl text-teal-600 hover:text-teal-500 font-semibold animated-underline">candilmartinalonso@gmail.com</a>
+<body
+  class="bg-gradient-to-tr from-emerald-50 via-emerald-100 to-teal-50 text-slate-800 scroll-smooth"
+>
+  <!-- Header & Navigation -->
+  <header
+    class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm"
+  >
+    <div
+      class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between"
+    >
+      <h1 class="text-lg font-bold text-teal-600">Martín Candil</h1>
+      <nav>
+        <!-- Desktop navigation -->
+        <ul class="hidden md:flex space-x-6 text-sm font-medium">
+          <li>
+            <a href="#sobre" class="hover:text-teal-600 nav-link"
+              >Sobre Mí</a
+            >
+          </li>
+          <li>
+            <a href="#experiencia" class="hover:text-teal-600 nav-link"
+              >Experiencia</a
+            >
+          </li>
+          <li>
+            <a href="#habilidades" class="hover:text-teal-600 nav-link"
+              >Habilidades</a
+            >
+          </li>
+          <li>
+            <a href="#formacion" class="hover:text-teal-600 nav-link"
+              >Formación</a
+            >
+          </li>
+          <li>
+            <a href="#contacto" class="hover:text-teal-600 nav-link"
+              >Contacto</a
+            >
+          </li>
+        </ul>
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden flex items-center text-teal-600"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <!-- Mobile navigation panel -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden bg-white/80 backdrop-blur"
+    >
+      <ul class="px-4 py-4 space-y-3 text-sm font-medium">
+        <li><a href="#sobre" class="block nav-link">Sobre Mí</a></li>
+        <li>
+          <a href="#experiencia" class="block nav-link">Experiencia</a>
+        </li>
+        <li>
+          <a href="#habilidades" class="block nav-link">Habilidades</a>
+        </li>
+        <li>
+          <a href="#formacion" class="block nav-link">Formación</a>
+        </li>
+        <li>
+          <a href="#contacto" class="block nav-link">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <!-- Hero section -->
+    <section
+      id="hero"
+      class="min-h-[70vh] flex flex-col items-center justify-center text-center px-4"
+    >
+      <h2 class="text-3xl md:text-5xl font-bold mb-4">
+        Licenciado en Relaciones Laborales
+      </h2>
+      <p class="text-lg md:text-xl max-w-3xl mb-6">
+        Impulsando la eficiencia organizacional con estrategias innovadoras y
+        gestión del talento.
+      </p>
+      <a
+        href="#contacto"
+        class="cta-button inline-block bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-full shadow transition"
+        >Ponerse en contacto</a
+      >
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre" class="py-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 animate-on-scroll">
+          Sobre Mí
+        </h2>
+        <p
+          class="text-base md:text-lg leading-relaxed mb-4 animate-on-scroll"
+        >
+          ¡Hola! Soy Martín, Licenciado en Relaciones Laborales apasionado por la
+          intersección entre el talento humano y los objetivos de negocio. Mi
+          carrera se ha enfocado en diseñar procesos eficientes y humanos. Me
+          especializo en el ciclo completo de vida del empleado, desde la
+          atracción y selección de talento hasta la gestión y administración de
+          las relaciones laborales. Con experiencia en diversos sectores, mi
+          objetivo es crear soluciones que aporten valor tangible y potencien
+          el crecimiento organizacional.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experiencia" class="py-16 px-4 bg-emerald-50">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll"
+        >
+          Experiencia Profesional
+        </h2>
+        <div class="space-y-8">
+          <!-- Each experience item -->
+          <div class="experience-card animate-on-scroll">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-sm text-teal-600 font-medium">
+                  Jul 2023 - Feb 2024
                 </p>
+                <h3 class="text-xl font-semibold">Responsable de RRHH</h3>
+                <p class="text-slate-600 italic mb-2">Dental Brackets</p>
+                <ul class="list-disc ml-5 text-base space-y-1">
+                  <li>
+                    Coordinación integral del área, definiendo políticas y
+                    procedimientos.
+                  </li>
+                  <li>
+                    Gestión completa de administración de personal: altas,
+                    bajas, contratos, legajos.
+                  </li>
+                  <li>
+                    Supervisión y control de liquidación de sueldos (CCT
+                    130/75), reduciendo errores.
+                  </li>
+                  <li>
+                    Manejo de relaciones laborales y resolución de conflictos.
+                  </li>
+                </ul>
+              </div>
             </div>
-        </section>
-    </main>
-    <footer class="bg-gray-50/70 border-t border-gray-100/80">
-        <div class="container mx-auto px-6 py-8 flex flex-col sm:flex-row justify-between items-center">
-            <p class="text-gray-500 text-sm">&copy; 2024 Martín Alonso Candil</p>
-            <div class="flex space-x-5 mt-4 sm:mt-0">
-                <a href="https://www.linkedin.com/in/martinalonsocandil" target="_blank" rel="noopener" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5 social-icon"></i></a>
-                <a href="https://www.instagram.com/candilmartinalonso" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5 social-icon"></i></a>
-                <a href="https://www.facebook.com/martinalonsocandil" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5 social-icon"></i></a>
+          </div>
+          <div class="experience-card animate-on-scroll">
+            <div>
+              <p class="text-sm text-teal-600 font-medium">
+                Sep 2022 - Jul 2023
+              </p>
+              <h3 class="text-xl font-semibold">Analista de RRHH</h3>
+              <p class="text-slate-600 italic mb-2">Priority Home Care</p>
+              <ul class="list-disc ml-5 text-base space-y-1">
+                <li>
+                  Lideré procesos de reclutamiento y selección, reduciendo el
+                  tiempo de contratación.
+                </li>
+                <li>
+                  Implementé programa de onboarding, mejorando integración y
+                  retención.
+                </li>
+                <li>Análisis de datos de RRHH para decisiones estratégicas.</li>
+                <li>
+                  Colaboré en la gestión de desempeño y capacitación.
+                </li>
+              </ul>
             </div>
+          </div>
+          <div class="experience-card animate-on-scroll">
+            <div>
+              <p class="text-sm text-teal-600 font-medium">
+                Ene 2022 - Abr 2022
+              </p>
+              <h3 class="text-xl font-semibold">Analista de RRHH</h3>
+              <p class="text-slate-600 italic mb-2">South America Implants</p>
+              <ul class="list-disc ml-5 text-base space-y-1">
+                <li>Analicé datos de RRHH para estrategias de retención.</li>
+                <li>Rediseñé procesos clave para mayor eficiencia operativa.</li>
+                <li>
+                  Participé en comunicación interna y eventos corporativos.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-card animate-on-scroll">
+            <div>
+              <p class="text-sm text-teal-600 font-medium">
+                Dic 2020 - May 2021
+              </p>
+              <h3 class="text-xl font-semibold">Analista de RRHH</h3>
+              <p class="text-slate-600 italic mb-2">Country Golf El Sosiego</p>
+              <ul class="list-disc ml-5 text-base space-y-1">
+                <li>
+                  Gestión de recursos humanos, reclutamiento y selección.
+                </li>
+                <li>
+                  Manejo de relaciones laborales y aplicación del CCT 736/16.
+                </li>
+                <li>
+                  Administración de personal y control de ausentismo.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-card animate-on-scroll">
+            <div>
+              <p class="text-sm text-teal-600 font-medium">
+                Mar 2015 - Dic 2019
+              </p>
+              <h3 class="text-xl font-semibold">Capacitador</h3>
+              <p class="text-slate-600 italic mb-2">La Veneciana</p>
+              <ul class="list-disc ml-5 text-base space-y-1">
+                <li>
+                  Desarrollé enfoque en atención al cliente, aumentando
+                  satisfacción y lealtad.
+                </li>
+                <li>
+                  Diseñé y dicté capacitaciones sobre productos y ventas.
+                </li>
+                <li>Mejoré rendimiento y productividad del equipo.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </footer>
-    <button id="scrollTopButton" aria-label="Volver arriba"><i data-lucide="arrow-up" class="w-5 h-5"></i></button>
-    <script>
-        document.addEventListener('DOMContentLoaded',()=> {
-            lucide.createIcons();
-            const bg=document.getElementById('particles-bg');
-            if(bg)for(let i=1;i<=3;i++){const p=document.createElement('div');p.className=`particle particle-${i}`;bg.appendChild(p);}
-            const mobileMenuButton=document.getElementById('mobile-menu-button'),mobileMenu=document.getElementById('mobile-menu');
-            if(mobileMenuButton&&mobileMenu)mobileMenuButton.addEventListener('click',()=>{const isExpanded=mobileMenuButton.getAttribute('aria-expanded')==='true';mobileMenuButton.setAttribute('aria-expanded',!isExpanded);mobileMenu.classList.toggle('hidden');});
-            const scrollTopButton=document.getElementById('scrollTopButton');
-            if(scrollTopButton){
-                window.addEventListener('scroll',()=>{window.scrollY>400?scrollTopButton.classList.add('visible'):scrollTopButton.classList.remove('visible');});
-                scrollTopButton.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'});});
-            }
-            document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',function(e){const targetId=this.getAttribute('href');if(targetId.length>1){e.preventDefault();const targetElement=document.querySelector(targetId);if(targetElement){const headerOffset=document.querySelector('header').offsetHeight,elementPosition=targetElement.getBoundingClientRect().top,offsetPosition=elementPosition+window.pageYOffset-headerOffset;window.scrollTo({top:offsetPosition,behavior:'smooth'});if(mobileMenu&&!mobileMenu.classList.contains('hidden')){mobileMenu.classList.add('hidden');mobileMenuButton.setAttribute('aria-expanded','false');}}}});});
-            const animationObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('is-visible');});},{threshold:.1});
-            document.querySelectorAll('.animate-on-scroll,.main-section,.timeline-line,.timeline-point').forEach(el=>{animationObserver.observe(el);});
-            const sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('.nav-link');
-            const navObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const currentSectionId=entry.target.id;navLinks.forEach(link=>{link.classList.toggle('nav-link-active',link.getAttribute('href').substring(1)===currentSectionId);});}});},{rootMargin:"-40% 0px -59% 0px"});
-            sections.forEach(section=>{if(section.id)navObserver.observe(section);});
-            document.querySelectorAll('.interactive-card').forEach(card=>{card.onmousemove=e=>{const rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;card.style.setProperty('--mouse-x',`${x}px`);card.style.setProperty('--mouse-y',`${y}px`);};});
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="py-16 px-4">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll"
+        >
+          Habilidades Clave
+        </h2>
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        >
+          <!-- Each skill card -->
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="user-plus" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Reclutamiento</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="scroll-text" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Legislación</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="handshake" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Negociación</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="file-spreadsheet" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Excel</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="monitor-play" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Marketing Digital</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="globe" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Inglés</h4>
+          </div>
+          <div
+            class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition"
+          >
+            <span
+              class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600"
+            >
+              <svg data-lucide="users" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium">Resolución de Conflictos</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formación Académica -->
+    <section id="formacion" class="py-16 px-4 bg-emerald-50">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll"
+        >
+          Formación Académica
+        </h2>
+        <div class="space-y-8">
+          <div class="education-card animate-on-scroll">
+            <p class="text-sm text-teal-600 font-medium">2014 - 2023</p>
+            <h3 class="text-xl font-semibold">
+              Licenciatura en Relaciones Laborales
+            </h3>
+            <p class="text-slate-600">UNLZ</p>
+          </div>
+          <div class="education-card animate-on-scroll">
+            <p class="text-sm text-teal-600 font-medium">2023 - 2024</p>
+            <h3 class="text-xl font-semibold">Marketing Digital</h3>
+            <p class="text-slate-600">Academia Numen</p>
+          </div>
+          <div class="education-card animate-on-scroll">
+            <p class="text-sm text-teal-600 font-medium">2018 - 2019</p>
+            <h3 class="text-xl font-semibold">Excel Avanzado</h3>
+            <p class="text-slate-600">IAC</p>
+          </div>
+          <div class="education-card animate-on-scroll">
+            <p class="text-sm text-teal-600 font-medium">2014 - 2015</p>
+            <h3 class="text-xl font-semibold">Liquidación de Sueldos</h3>
+            <p class="text-slate-600">UNLa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-16 px-4">
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 animate-on-scroll">
+          Contacto
+        </h2>
+        <p class="text-base md:text-lg mb-6 animate-on-scroll">
+          ¿Querés ponerte en contacto? Escribime a
+          <a
+            href="mailto:candilmartinalonso@gmail.com"
+            class="text-teal-600 underline"
+            >candilmartinalonso@gmail.com</a
+          >
+        </p>
+        <div
+          class="flex justify-center space-x-4 animate-on-scroll"
+        >
+          <a
+            href="https://www.linkedin.com/in/martincandil/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+            class="social-icon text-teal-600 hover:text-teal-800"
+          >
+            <svg data-lucide="linkedin"></svg>
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            class="social-icon text-teal-600 hover:text-teal-800"
+          >
+            <svg data-lucide="instagram"></svg>
+          </a>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+            class="social-icon text-teal-600 hover:text-teal-800"
+          >
+            <svg data-lucide="facebook"></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-slate-500">
+    © <span id="year"></span> Martín Alonso Candil
+  </footer>
+
+  <!-- Scroll to top button -->
+  <button
+    id="scrollTopButton"
+    title="Volver arriba"
+    class="fixed bottom-6 right-6 z-50 bg-white text-teal-600 w-12 h-12 rounded-full border border-teal-100 flex items-center justify-center shadow transition hover:bg-emerald-50 hidden"
+  >
+    <svg data-lucide="chevron-up"></svg>
+  </button>
+
+  <!-- JavaScript for interactivity -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current year dynamically
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Render icons using lucide
+      lucide.createIcons();
+
+      // Mobile menu toggle functionality
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isExpanded =
+            mobileMenuButton.getAttribute('aria-expanded') === 'true';
+          mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+          mobileMenu.classList.toggle('hidden');
         });
-    </script>
+      }
+
+      // Scroll-to-top button functionality
+      const scrollTopButton = document.getElementById('scrollTopButton');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          scrollTopButton.classList.remove('hidden');
+        } else {
+          scrollTopButton.classList.add('hidden');
+        }
+      });
+      scrollTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Smooth anchor scrolling and header offset
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId.length > 1) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const headerOffset = document.querySelector('header').offsetHeight;
+              const elementPosition =
+                targetElement.getBoundingClientRect().top;
+              const offsetPosition =
+                elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+              if (
+                mobileMenu &&
+                !mobileMenu.classList.contains('hidden')
+              ) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+              }
+            }
+          }
+        });
+      });
+
+      // Intersection Observer for reveal animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      document
+        .querySelectorAll('.animate-on-scroll')
+        .forEach((el) => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
