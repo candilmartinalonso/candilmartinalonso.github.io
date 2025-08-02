@@ -1,10 +1,10 @@
 /*
-  Custom styles for Martín Candil portfolio
-  These rules complement Tailwind's utility classes and provide
-  subtle animations and card styling.
+  Custom styles mejorados para el portafolio de Martín Alonso Candil.
+  Estas reglas complementan las utilidades de Tailwind y proporcionan
+  animaciones sutiles en los elementos y tarjetas.
 */
 
-/* Fade-in effect on page load */
+/* Efecto de desvanecimiento al cargar la página */
 body {
   opacity: 0;
   animation: fadeIn 1s forwards;
@@ -16,7 +16,7 @@ body {
   }
 }
 
-/* Animation for elements that appear on scroll */
+/* Animación para elementos que aparecen al hacer scroll */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(20px);
@@ -27,14 +27,24 @@ body {
   transform: translateY(0);
 }
 
-/* Experience and education cards styling */
+/* Animación personalizada para la foto de perfil */
+.profile-photo.animate-on-scroll {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.profile-photo.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Estilos de tarjetas de experiencia y educación */
 .experience-card,
 .education-card {
   background-color: #ffffff;
   padding: 1.25rem;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05),
-    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
 }
 .experience-card:hover,
@@ -42,19 +52,19 @@ body {
   transform: translateY(-5px);
 }
 
-/* Skill cards: ensure icons and text are aligned */
+/* Alineación de iconos y texto en tarjetas de habilidades */
 .skill-card svg {
   width: 24px;
   height: 24px;
 }
 
-/* Social icons sizing */
+/* Tamaño de los iconos sociales */
 .social-icon svg {
   width: 24px;
   height: 24px;
 }
 
-/* CTA button subtle bounce animation on hover */
+/* Animación sutil en el botón de llamada a la acción */
 .cta-button {
   transition: transform 0.3s, box-shadow 0.3s;
 }
