@@ -72,3 +72,23 @@ body {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Botones de redes sociales en la cabecera */
+.header-social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ecfdf5; /* tono claro de verde/teal */
+  color: #0f766e; /* tono oscuro de teal */
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.header-social-button:hover {
+  background-color: #d1fae5;
+  transform: translateY(-2px);
+}
+.header-social-button svg {
+  width: 20px;
+  height: 20px;
+}
