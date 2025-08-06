@@ -25,54 +25,52 @@
 <body class="bg-gradient-to-tr from-emerald-50 via-emerald-100 to-teal-50 text-slate-800 scroll-smooth">
   <!-- Encabezado y navegación -->
   <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center">
-      <!-- Se actualizó el nombre para incluir el apellido y nombre completo -->
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Nombre -->
       <h1 class="text-lg font-bold text-teal-600">Martín Alonso Candil</h1>
-      <!-- Agrupamos la navegación y los iconos para poder empujarlos juntos hacia la derecha -->
-      <div class="flex items-center ml-auto">
-        <nav class="ml-8">
+
+      <!-- Navegación y Redes Sociales -->
+      <div class="flex items-center">
         <!-- Navegación de escritorio -->
-        <ul class="hidden md:flex space-x-6 text-sm font-medium">
-          <li><a href="#sobre" class="hover:text-teal-600 nav-link">Sobre Mí</a></li>
-          <li><a href="#experiencia" class="hover:text-teal-600 nav-link">Experiencia</a></li>
-          <li><a href="#habilidades" class="hover:text-teal-600 nav-link">Habilidades</a></li>
-          <li><a href="#formacion" class="hover:text-teal-600 nav-link">Formación</a></li>
-          <li><a href="#contacto" class="hover:text-teal-600 nav-link">Contacto</a></li>
-        </ul>
-        <!-- Botón de menú móvil -->
-        <button id="mobile-menu-button" class="md:hidden flex items-center text-teal-600" aria-controls="mobile-menu" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </nav>
+        <nav class="hidden md:flex items-center">
+          <ul class="flex space-x-6 text-sm font-medium">
+            <li><a href="#sobre" class="hover:text-teal-600 nav-link">Sobre Mí</a></li>
+            <li><a href="#experiencia" class="hover:text-teal-600 nav-link">Experiencia</a></li>
+            <li><a href="#habilidades" class="hover:text-teal-600 nav-link">Habilidades</a></li>
+            <li><a href="#formacion" class="hover:text-teal-600 nav-link">Formación</a></li>
+            <li><a href="#contacto" class="hover:text-teal-600 nav-link">Contacto</a></li>
+          </ul>
+        </nav>
 
         <!-- Botones de redes sociales en la cabecera -->
-        <!-- Ajustado para que estén alineados con el contenido y visibles en todas las resoluciones -->
-        <div class="flex items-center space-x-4 ml-4">
+        <div class="flex items-center space-x-4 ml-6">
           <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="header-social-button">
-            <!-- Icono de Instagram incrustado directamente para evitar dependencias externas -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
             </svg>
           </a>
           <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="header-social-button">
-            <!-- Icono de Facebook incrustado directamente para evitar dependencias externas -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
           <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="header-social-button">
-            <!-- Icono de LinkedIn incrustado directamente para evitar dependencias externas -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect width="4" height="12" x="2" y="9"></rect>
+              <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
           </a>
         </div>
+
+        <!-- Botón de menú móvil -->
+        <button id="mobile-menu-button" class="md:hidden flex items-center text-teal-600 ml-4" aria-controls="mobile-menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
     <!-- Panel de navegación móvil -->
@@ -93,7 +91,7 @@
       <!-- Foto de perfil añadida con animación al hacer scroll -->
       <img src="Foto cara.jpg" alt="Martín Alonso Candil" class="profile-photo animate-on-scroll w-40 h-40 md:w-56 md:h-56 rounded-full object-cover mb-6 shadow-lg border-4 border-teal-100" />
       <h2 class="text-3xl md:text-5xl font-bold mb-4 animate-on-scroll">Licenciado en Relaciones Laborales</h2>
-      <p class="text-lg md:text-xl max-w-3xl mb-6 animate-on-scroll">Impulsando la eficiencia organizacional con estrategias innovadoras y gestión del talento.</p>
+      <p class="text-lg md:text-xl max-w-3xl mb-6 animate-on-scroll">Especialista en potenciar el capital humano para acelerar el crecimiento y la eficiencia organizacional.</p>
       <a href="#contacto" class="cta-button inline-block bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-full shadow transition animate-on-scroll">Ponerse en contacto</a>
     </section>
     <!-- Sobre mí -->
@@ -101,7 +99,7 @@
       <div class="max-w-5xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold mb-4 animate-on-scroll">Sobre Mí</h2>
         <p class="text-base md:text-lg leading-relaxed mb-4 animate-on-scroll">
-          ¡Hola! Soy Martín Alonso Candil, Licenciado en Relaciones Laborales apasionado por la intersección entre el talento humano y los objetivos de negocio. Mi carrera se ha enfocado en diseñar procesos eficientes y humanos. Me especializo en el ciclo completo de vida del empleado, desde la atracción y selección de talento hasta la gestión y administración de las relaciones laborales. Con experiencia en diversos sectores, mi objetivo es crear soluciones que aporten valor tangible y potencien el crecimiento organizacional.
+          Apasionado por la dinámica de las relaciones humanas en el ámbito laboral, mi carrera como Licenciado en Relaciones Laborales se ha centrado en ser un puente entre el talento de las personas y los objetivos estratégicos de la organización. Me especializo en optimizar cada etapa del ciclo de vida del empleado, desde la atracción y selección de perfiles clave hasta la administración de personal y la negociación. Mi motor es construir entornos de trabajo eficientes y justos donde cada colaborador pueda crecer, impulsando así el éxito colectivo del negocio.
         </p>
       </div>
     </section>
@@ -115,10 +113,10 @@
             <h3 class="text-xl font-semibold">Responsable de RRHH</h3>
             <p class="text-slate-600 italic mb-2">Dental Brackets</p>
             <ul class="list-disc ml-5 text-base space-y-1">
-              <li>Coordinación integral del área, definiendo políticas y procedimientos.</li>
-              <li>Gestión completa de administración de personal: altas, bajas, contratos, legajos.</li>
-              <li>Supervisión y control de liquidación de sueldos (CCT 130/75), reduciendo errores.</li>
-              <li>Manejo de relaciones laborales y resolución de conflictos.</li>
+              <li>Lideré la gestión integral del área, administrando la nómina y los beneficios para una plantilla de más de 150 empleados.</li>
+              <li>Dirigí las relaciones laborales, mediando eficazmente en la resolución de conflictos sindicales y garantizando un clima laboral estable.</li>
+              <li>Supervisé el proceso de liquidación de sueldos (CCT 130/75), asegurando la precisión y el cumplimiento normativo.</li>
+              <li>Optimicé el proceso de onboarding, diseñando e implementando mejoras que agilizaron la integración de nuevos talentos a la empresa.</li>
             </ul>
           </div>
           <div class="experience-card animate-on-scroll">
@@ -126,10 +124,10 @@
             <h3 class="text-xl font-semibold">Analista de RRHH</h3>
             <p class="text-slate-600 italic mb-2">Priority Home Care</p>
             <ul class="list-disc ml-5 text-base space-y-1">
-              <li>Lideré procesos de reclutamiento y selección, reduciendo el tiempo de contratación.</li>
-              <li>Implementé programa de onboarding, mejorando integración y retención.</li>
-              <li>Análisis de datos de RRHH para decisiones estratégicas.</li>
-              <li>Colaboré en la gestión de desempeño y capacitación.</li>
+              <li>Lideré ciclos completos de reclutamiento para perfiles sanitarios y administrativos, logrando una reducción del 30% en el tiempo promedio de contratación.</li>
+              <li>Desarrollé y mantuve dashboards de RRHH para el análisis de métricas clave como la rotación y el ausentismo, proveyendo insights estratégicos a la dirección.</li>
+              <li>Gestioné de forma integral la nómina y los beneficios, asegurando el cumplimiento de la legislación vigente y la máxima eficiencia operativa.</li>
+              <li>Diseñé e implementé un nuevo programa de onboarding que resultó en una mejora medible de la integración y retención del personal.</li>
             </ul>
           </div>
           <div class="experience-card animate-on-scroll">
@@ -137,9 +135,9 @@
             <h3 class="text-xl font-semibold">Analista de RRHH</h3>
             <p class="text-slate-600 italic mb-2">South America Implants</p>
             <ul class="list-disc ml-5 text-base space-y-1">
-              <li>Analicé datos de RRHH para estrategias de retención.</li>
-              <li>Rediseñé procesos clave para mayor eficiencia operativa.</li>
-              <li>Participé en comunicación interna y eventos corporativos.</li>
+              <li>Impulsé una reingeniería del proceso de evaluación de desempeño, lo que resultó en un aumento de la participación de los empleados del 60% al 85%.</li>
+              <li>Analicé datos críticos de Recursos Humanos para fundamentar y desarrollar nuevas estrategias de retención de talento.</li>
+              <li>Preparé y presenté reportes exhaustivos para auditorías internas y externas, garantizando la transparencia y el cumplimiento.</li>
             </ul>
           </div>
           <div class="experience-card animate-on-scroll">
@@ -147,9 +145,9 @@
             <h3 class="text-xl font-semibold">Analista de RRHH</h3>
             <p class="text-slate-600 italic mb-2">Country Golf El Sosiego</p>
             <ul class="list-disc ml-5 text-base space-y-1">
-              <li>Gestión de recursos humanos, reclutamiento y selección.</li>
-              <li>Manejo de relaciones laborales y aplicación del CCT 736/16.</li>
-              <li>Administración de personal y control de ausentismo.</li>
+              <li>Coordiné exitosamente los procesos de selección de personal operativo y administrativo para satisfacer las necesidades de la organización.</li>
+              <li>Implementé un innovador sistema de control de asistencia, mejorando la precisión en el seguimiento del tiempo y la gestión de la puntualidad.</li>
+              <li>Gestioné las relaciones laborales diarias, aplicando el Convenio Colectivo de Trabajo 736/16 para asegurar un entorno justo y regulado.</li>
             </ul>
           </div>
           <div class="experience-card animate-on-scroll">
@@ -157,9 +155,9 @@
             <h3 class="text-xl font-semibold">Capacitador</h3>
             <p class="text-slate-600 italic mb-2">La Veneciana</p>
             <ul class="list-disc ml-5 text-base space-y-1">
-              <li>Desarrollé enfoque en atención al cliente, aumentando satisfacción y lealtad.</li>
-              <li>Diseñé y dicté capacitaciones sobre productos y ventas.</li>
-              <li>Mejoré rendimiento y productividad del equipo.</li>
+              <li>Desarrollé e impartí programas de capacitación enfocados en la atención al cliente, logrando fortalecer la lealtad y mejorar la reputación de la marca.</li>
+              <li>Potencié el rendimiento y la productividad del equipo de ventas a través de formaciones efectivas sobre productos y técnicas de venta.</li>
+              <li>Lideré la gestión de reclamos, implementando un sistema para la resolución eficiente de problemas que elevó los índices de satisfacción del cliente.</li>
             </ul>
           </div>
         </div>
@@ -169,79 +167,101 @@
     <section id="habilidades" class="py-16 px-4">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll">Habilidades Clave</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="user-plus" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Reclutamiento</h4>
+            <h4 class="font-medium text-center">Reclutamiento</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="scroll-text" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Legislación</h4>
+            <h4 class="font-medium text-center">Legislación</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="handshake" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Negociación</h4>
+            <h4 class="font-medium text-center">Negociación</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="file-spreadsheet" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Excel</h4>
+            <h4 class="font-medium text-center">Excel Avanzado</h4>
+          </div>
+          <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+            <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
+              <svg data-lucide="database" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium text-center">Tango Gestión</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="monitor-play" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Marketing Digital</h4>
+            <h4 class="font-medium text-center">Marketing Digital</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="globe" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Inglés</h4>
+            <h4 class="font-medium text-center">Inglés (B2)</h4>
           </div>
           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
             <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
               <svg data-lucide="users" class="skill-icon"></svg>
             </span>
-            <h4 class="font-medium">Resolución de Conflictos</h4>
+            <h4 class="font-medium text-center">Resolución de Conflictos</h4>
+          </div>
+           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+            <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
+              <svg data-lucide="message-circle" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium text-center">Comunicación</h4>
+          </div>
+           <div class="skill-card animate-on-scroll flex flex-col items-center p-4 bg-white rounded-lg shadow hover:shadow-md transition">
+            <span class="skill-icon-wrapper flex items-center justify-center w-12 h-12 mb-3 bg-teal-50 rounded-full text-teal-600">
+              <svg data-lucide="award" class="skill-icon"></svg>
+            </span>
+            <h4 class="font-medium text-center">Liderazgo</h4>
           </div>
         </div>
       </div>
     </section>
     <!-- Formación Académica -->
     <section id="formacion" class="py-16 px-4 bg-emerald-50">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll">Formación Académica</h2>
-        <div class="space-y-8">
-          <div class="education-card animate-on-scroll">
-            <p class="text-sm text-teal-600 font-medium">2014 - 2023</p>
-            <h3 class="text-xl font-semibold">Licenciatura en Relaciones Laborales</h3>
-            <p class="text-slate-600">UNLZ</p>
-          </div>
-          <div class="education-card animate-on-scroll">
-            <p class="text-sm text-teal-600 font-medium">2023 - 2024</p>
-            <h3 class="text-xl font-semibold">Marketing Digital</h3>
-            <p class="text-slate-600">Academia Numen</p>
-          </div>
-          <div class="education-card animate-on-scroll">
-            <p class="text-sm text-teal-600 font-medium">2018 - 2019</p>
-            <h3 class="text-xl font-semibold">Excel Avanzado</h3>
-            <p class="text-slate-600">IAC</p>
-          </div>
-          <div class="education-card animate-on-scroll">
-            <p class="text-sm text-teal-600 font-medium">2014 - 2015</p>
-            <h3 class="text-xl font-semibold">Liquidación de Sueldos</h3>
-            <p class="text-slate-600">UNLa</p>
-          </div>
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-8 animate-on-scroll">Formación Académica</h2>
+            <div class="space-y-8">
+                <div class="education-card animate-on-scroll">
+                    <p class="text-sm text-teal-600 font-medium">2014 - 2023</p>
+                    <h3 class="text-xl font-semibold">Licenciatura en Relaciones Laborales</h3>
+                    <p class="text-slate-600 italic mb-2">Universidad Nacional de Lomas de Zamora</p>
+                    <p class="text-slate-700">Plan de estudios centrado en derecho laboral, negociación colectiva y gestión de recursos humanos. Proyecto final: análisis de políticas de retención de talento.</p>
+                </div>
+                <div class="education-card animate-on-scroll">
+                    <p class="text-sm text-teal-600 font-medium">2023 - 2024</p>
+                    <h3 class="text-xl font-semibold">Diplomatura en Marketing Digital</h3>
+                    <p class="text-slate-600 italic mb-2">Academia Numen</p>
+                    <p class="text-slate-700">Especialización en campañas en Google Ads y Meta Ads, email marketing y métricas de rendimiento.</p>
+                </div>
+                <div class="education-card animate-on-scroll">
+                    <p class="text-sm text-teal-600 font-medium">2018 - 2019</p>
+                    <h3 class="text-xl font-semibold">Excel Avanzado</h3>
+                    <p class="text-slate-600 italic mb-2">Instituto Argentino de Computación</p>
+                    <p class="text-slate-700">Dominio de tablas dinámicas, macros y funciones avanzadas aplicadas al análisis de datos de RRHH.</p>
+                </div>
+                <div class="education-card animate-on-scroll">
+                    <p class="text-sm text-teal-600 font-medium">2014 - 2015</p>
+                    <h3 class="text-xl font-semibold">Liquidación de Sueldos</h3>
+                    <p class="text-slate-600 italic mb-2">Universidad Nacional de Lanús</p>
+                    <p class="text-slate-700">Formación práctica en cálculo de nóminas, cargas sociales y gestión de legajos con software Tango Gestión.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
     <!-- Contacto -->
     <section id="contacto" class="py-16 px-4">
@@ -251,21 +271,21 @@
         <div class="flex justify-center space-x-4 animate-on-scroll">
           <!-- Iconos de redes sociales incrustados directamente para mayor confiabilidad -->
           <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon text-teal-600 hover:text-teal-800">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect width="4" height="12" x="2" y="9"></rect>
+              <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
           </a>
           <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon text-teal-600 hover:text-teal-800">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
             </svg>
           </a>
           <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon text-teal-600 hover:text-teal-800">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
