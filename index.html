@@ -29,9 +29,9 @@
       <!-- Nombre -->
       <h1 class="text-lg font-bold text-teal-600">Martín Alonso Candil</h1>
 
-      <!-- Navegación y Redes Sociales -->
+      <!-- Contenedor para navegación y redes -->
       <div class="flex items-center">
-        <!-- Navegación de escritorio -->
+        <!-- Navegación de escritorio (oculta en móvil) -->
         <nav class="hidden md:flex items-center">
           <ul class="flex space-x-6 text-sm font-medium">
             <li><a href="#sobre" class="hover:text-teal-600 nav-link">Sobre Mí</a></li>
@@ -42,22 +42,25 @@
           </ul>
         </nav>
 
-        <!-- Botones de redes sociales en la cabecera -->
-        <div class="flex items-center space-x-4 ml-6">
-          <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="header-social-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Divisor (opcional, para separar nav de iconos en desktop) -->
+        <div class="hidden md:block w-px h-6 bg-slate-200 mx-4"></div>
+
+        <!-- Botones de redes sociales (siempre visibles) con clases de Tailwind -->
+        <div class="flex items-center space-x-3">
+          <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="inline-flex items-center justify-center p-2 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 hover:-translate-y-0.5 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
             </svg>
           </a>
-          <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="header-social-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="inline-flex items-center justify-center p-2 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 hover:-translate-y-0.5 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="header-social-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="inline-flex items-center justify-center p-2 rounded-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 hover:-translate-y-0.5 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
@@ -65,7 +68,7 @@
           </a>
         </div>
 
-        <!-- Botón de menú móvil -->
+        <!-- Botón de menú móvil (solo visible en móvil) -->
         <button id="mobile-menu-button" class="md:hidden flex items-center text-teal-600 ml-4" aria-controls="mobile-menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16" />
