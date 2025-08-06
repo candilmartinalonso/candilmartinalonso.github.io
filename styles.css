@@ -86,7 +86,7 @@ body {
   transition: background-color 0.3s, transform 0.3s;
 }
 .header-social-button:hover {
-  background-color: #d1fae5;
+  background-color: #a7f3d0;
   transform: translateY(-2px);
 }
 .header-social-button svg {
