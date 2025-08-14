@@ -1,0 +1,60 @@
+/*
+  Custom styles mejorados para el portafolio de Martín Alonso Candil.
+  Estas reglas complementan las utilidades de Tailwind y proporcionan
+  animaciones sutiles y otras más llamativas.
+*/
+
+/* Fade-in de toda la página */
+body { opacity: 0; animation: fadeIn 0.8s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* Aparición al hacer scroll (se combina con clases inline) */
+.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.8s ease-out; }
+.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Headline con gradiente animado */
+.animated-text-gradient {
+  background: linear-gradient(90deg, #0ea5e9, #14b8a6, #10b981, #0ea5e9);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 300% 100%;
+  animation: slideGradient 8s ease infinite;
+}
+@keyframes slideGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* Typed headline caret */
+.typed-cursor { font-weight: 800; color: #0f766e; }
+
+/* Neon glow on CTA */
+.neon-glow { box-shadow: 0 0 0 rgba(20,184,166,0); }
+.neon-glow:hover { box-shadow: 0 12px 30px rgba(20,184,166,0.35), 0 0 40px rgba(20,184,166,0.25) inset; }
+
+/* Header social button (from previous CSS) */
+.header-social-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  background-color: #d1fae5; color: #065f46; padding: 0.5rem;
+  border-radius: 9999px; transition: background-color 0.3s, transform 0.3s;
+}
+.header-social-button:hover { background-color: #a7f3d0; transform: translateY(-2px); }
+
+/* Progress bar */
+#progressBar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, #14b8a6, #34d399, #a7f3d0);
+  z-index: 60;
+}
+
+/* Cursor glow follower */
+#cursorGlow {
+  position: fixed; width: 200px; height: 200px; border-radius: 100%;
+  pointer-events: none; z-index: 0; opacity: 0.25;
+  background: radial-gradient(closest-side, rgba(20,184,166,0.35), transparent 70%);
+  transform: translate3d(-100px,-100px,0);
+}
+
+/* Vanilla tilt smoothness */
+.tilt { will-change: transform; }
+
+/* Reduced motion guard */
+@media (prefers-reduced-motion: reduce) {
+  .animated-text-gradient, #progressBar, #cursorGlow { animation: none; transition: none; }
+}
