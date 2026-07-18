@@ -1,661 +1,378 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martín Alonso Candil - Licenciado en Relaciones Laborales</title>
-  <meta name="description" content="Portafolio de Martín Alonso Candil, Licenciado en Relaciones Laborales, experto en potenciar equipos y la eficiencia organizacional." />
-  <meta name="author" content="Martín Alonso Candil" />
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  
-  <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <!-- Fancy libraries (lightweight) -->
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  
-  <style>
-    /* Usamos la fuente Inter importada */
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(-45deg, #f8fafc, #f1f5f9, #e2e8f0, #f8fafc);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* --- ESTILOS DE ANIMACIÓN --- */
-    .animate-on-scroll {
-      opacity: 0;
-      transition: opacity 0.6s ease-out, transform 0.8s ease-out;
-      will-change: opacity, transform;
-    }
-    .animate-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-in-up { transform: translateY(30px); }
-    .slide-in-left { transform: translateX(-30px); }
-    .slide-in-right { transform: translateX(30px); }
-    
-    /* --- FOTO DE PERFIL CON PULSO SUTIL --- */
-    .profile-image-pulse { 
-      animation: subtle-pulse 4s ease-in-out infinite; 
-    }
-    @keyframes subtle-pulse {
-        0% { transform: scale(1); box-shadow: 0 10px 25px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
-        50% { transform: scale(1.03); box-shadow: 0 20px 35px -3px rgba(20, 184, 166, 0.2), 0 8px 16px -2px rgba(20, 184, 166, 0.1); }
-        100% { transform: scale(1); box-shadow: 0 10px 25px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
-    }
-    
-    /* --- TIMELINE MEJORADO --- */
-    .timeline-item { 
-      position: relative; 
-      padding-left: 2.5rem; 
-      padding-bottom: 2rem; 
-      transition: background-color: 0.3s ease;
-      padding-top: 0.5rem; 
-      padding-right: 1rem; 
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item::before { 
-      content: ''; 
-      position: absolute; 
-      left: 0.45rem; 
-      top: 0.25rem; 
-      width: 2px; 
-      height: 100%; 
-      background-color: #ccfbf1; 
-      transform: scaleY(0); 
-      transform-origin: top; 
-      transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1); 
-    }
-    .timeline-item.is-visible::before { transform: scaleY(1); }
-    .timeline-item:last-child::before { height: 0; }
-    .timeline-item::after { 
-      content: ''; 
-      position: absolute; 
-      left: 0; 
-      top: 0.25rem; 
-      width: 0.9rem; 
-      height: 0.9rem; 
-      border-radius: 9999px; 
-      background-color: #14b8a6; 
-      border: 3px solid #f0fdfa; 
-      z-index: 10; 
-      transform: scale(0); 
-      transition: transform 0.5s 0.3s ease; 
-    }
-    .timeline-item.is-visible::after { 
-      transform: scale(1); 
-      animation: pulse-dot 2s infinite 1s; 
-    }
-    @keyframes pulse-dot { 
-      0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); } 
-      70% { box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); } 
-      100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); } 
-    }
-    .timeline-item:hover { background-color: #f0fdfa; border-radius: 0.75rem; }
-    .timeline-item.is-visible ul li { 
-      opacity: 0; 
-      transform: translateX(-20px); 
-      animation: slide-in-item 0.5s forwards; 
-      animation-delay: calc(0.2s * var(--li-index)); 
-    }
-    @keyframes slide-in-item { to { opacity: 1; transform: translateX(0); } }
-    
-    /* --- SKILL CARD HOVER EFFECT --- */
-    .skill-card:hover .skill-icon { animation: bounce-icon 0.6s ease; }
-    @keyframes bounce-icon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    
-    /* --- NAV LINK --- */
-    .nav-link { position: relative; }
-    .nav-link::after { 
-      content: ''; 
-      position: absolute; 
-      width: 0; 
-      height: 2px; 
-      bottom: -4px; 
-      left: 50%; 
-      transform: translateX(-50%); 
-      background-color: #14b8a6; 
-      transition: width 0.3s ease-in-out; 
-    }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link.active { color: #14b8a6; font-weight: 600; }
-    
-    /* --- SECTION TITLE --- */
-    .section-title { position: relative; display: inline-block; }
-    .section-title::after { 
-      content: ''; 
-      position: absolute; 
-      width: 0%; 
-      height: 3px; 
-      display: block; 
-      margin-top: 5px; 
-      right: 0; 
-      background: #14b8a6; 
-      transition: width .4s ease; 
-    }
-    .section-title.is-visible::after { width: 100%; left: 0; background: #14b8a6; }
-    
-    /* REDUCED MOTION */
-    @media (prefers-reduced-motion: reduce) {
-      .animate-on-scroll, .profile-image-pulse, .timeline-item::before, .timeline-item::after, body, .animated-text-gradient, .skill-card:hover .skill-icon, #contacto a:hover i {
-        transition: none; animation: none; opacity: 1; transform: none;
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portafolio de Martín Alonso Candil, Licenciado en Relaciones Laborales con experiencia en gestión de personas, procesos y análisis de RR. HH."
+    />
+    <meta name="author" content="Martín Alonso Candil" />
+    <meta name="theme-color" content="#102a27" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://candilmartinalonso.github.io/" />
+    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content="Martín Alonso Candil | Relaciones Laborales y RR. HH." />
+    <meta
+      property="og:description"
+      content="Gestión de personas, relaciones laborales, reclutamiento y análisis para organizaciones más claras y eficientes."
+    />
+    <meta property="og:url" content="https://candilmartinalonso.github.io/" />
+    <meta property="og:image" content="https://candilmartinalonso.github.io/assets/social-card.jpg" />
+    <meta property="profile:first_name" content="Martín" />
+    <meta property="profile:last_name" content="Alonso Candil" />
+    <title>Martín Alonso Candil | Relaciones Laborales y RR. HH.</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Martín Alonso Candil",
+        "jobTitle": "Licenciado en Relaciones Laborales",
+        "url": "https://candilmartinalonso.github.io/",
+        "sameAs": [
+          "https://www.linkedin.com/in/martinalonsocandil/",
+          "https://www.instagram.com/candilmartinalonso/",
+          "https://www.facebook.com/MartinAlonsoCandil/"
+        ]
       }
-    }
-    
-    /* MAGNETIC BUTTON EFFECT */
-    .magnetic-btn {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .magnetic-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.2), transparent);
-      transition: all 0.6s;
-      transform: translateX(-50%);
-    }
-    
-    .magnetic-btn:hover::before {
-      width: 120%;
-    }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-700">
-  <!-- Background particles & cursor glow -->
-  <div id="tsparticles" aria-hidden="true"></div>
-  <div id="cursorGlow" aria-hidden="true"></div>
-  <!-- Progress bar -->
-  <div id="progressBar" aria-hidden="true"></div>
-  
-  <!-- ===== Encabezado y Navegación ===== -->
-  <header id="header" class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo/Nombre -->
-        <div class="flex-shrink-0">
-          <a href="#" class="text-xl font-bold text-teal-600 hover:opacity-90 transition">Martín Alonso Candil</a>
-        </div>
-        
-        <!-- Contenedor para Nav y Redes (solo en escritorio) -->
-        <div class="hidden md:flex items-center space-x-8">
-          <!-- Navegación de escritorio y Redes Sociales -->
-          <nav class="flex items-center space-x-8">
-            <a href="#sobre" class="nav-link text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Sobre Mí</a>
-            <a href="#experiencia" class="nav-link text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Experiencia</a>
-            <a href="#habilidades" class="nav-link text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Habilidades</a>
-            <a href="#formacion" class="nav-link text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Formación</a>
-            <a href="#contacto" class="nav-link text-sm font-medium text-slate-600 hover:text-teal-600 transition-colors">Contacto</a>
-            
-            <!-- Redes Sociales (Escritorio) -->
-            <div class="flex items-center space-x-2">
-              <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="header-social-button"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-              <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="header-social-button"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-              <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="header-social-button"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="Martín Alonso Candil, ir al inicio">
+          <span class="brand-mark" aria-hidden="true">MAC</span>
+          <span class="brand-name">Martín Alonso Candil</span>
+        </a>
+
+        <button
+          class="menu-button"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+          aria-label="Abrir menú"
+          data-menu-button
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" id="main-navigation" aria-label="Navegación principal" data-menu>
+          <a href="#sobre-mi">Perfil</a>
+          <a href="#experiencia">Experiencia</a>
+          <a href="#competencias">Competencias</a>
+          <a href="#formacion">Formación</a>
+          <a class="nav-contact" href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="contenido">
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow"><span></span> Relaciones Laborales · Recursos Humanos</p>
+            <h1 id="hero-title">Personas, procesos y resultados que avanzan <em>juntos.</em></h1>
+            <p class="hero-lead">
+              Soy Martín, Licenciado en Relaciones Laborales. Conecto el potencial de los equipos con los
+              objetivos del negocio mediante una gestión clara, humana y basada en datos.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="button button-primary"
+                href="mailto:candilmartinalonso@gmail.com?subject=Contacto%20desde%20tu%20portfolio"
+              >
+                Escribirme <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="https://www.linkedin.com/in/martinalonsocandil/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ver LinkedIn
+              </a>
             </div>
-          </nav>
-        </div>
-        <!-- Botón de Menú Móvil -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
-            <span class="sr-only">Abrir menú principal</span>
-            <i id="menu-icon-open" data-lucide="menu" class="block h-6 w-6"></i>
-            <i id="menu-icon-close" data-lucide="x" class="hidden h-6 w-6"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Panel de Navegación Móvil -->
-    <div id="mobile-menu" class="hidden md:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="#sobre" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-100">Sobre Mí</a>
-        <a href="#experiencia" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-100">Experiencia</a>
-        <a href="#habilidades" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-100">Habilidades</a>
-        <a href="#formacion" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-100">Formación</a>
-        <a href="#contacto" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-teal-600 hover:bg-slate-100">Contacto</a>
-      </div>
-       <div class="pt-4 pb-3 border-t border-slate-200">
-          <div class="flex justify-center space-x-4">
-            <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="p-2 text-slate-500 hover:text-teal-600"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-            <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="p-2 text-slate-500 hover:text-teal-600"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-            <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="p-2 text-slate-500 hover:text-teal-600"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+            <dl class="hero-highlights">
+              <div><dt>200+</dt><dd>colaboradores gestionados</dd></div>
+              <div><dt>Integral</dt><dd>experiencia en el ciclo de RR. HH.</dd></div>
+              <div><dt>B2</dt><dd>nivel de inglés</dd></div>
+            </dl>
+          </div>
+
+          <div class="portrait-column" data-reveal>
+            <div class="availability"><i></i> Abierto a nuevos desafíos</div>
+            <div class="portrait-frame">
+              <div class="portrait-backdrop" aria-hidden="true"></div>
+              <picture>
+                <source srcset="./src/assets/profile.webp" type="image/webp" />
+                <img
+                  src="./src/assets/profile.jpg"
+                  width="720"
+                  height="720"
+                  alt="Retrato de Martín Alonso Candil"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+              <div class="portrait-caption">
+                <span>Especialidad</span>
+                <strong>Gestión de personas y relaciones laborales</strong>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
-  </header>
-  <!-- ===== Contenido Principal ===== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- ===== Sección Hero ===== -->
-    <section id="hero" class="py-20 md:py-32">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="text-center md:text-left">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-2 animate-on-scroll fade-in-up" style="transition-delay: 150ms;">
-            Licenciado en Relaciones Laborales
-          </h1>
-          <h2 class="text-2xl md:text-3xl text-slate-800 font-bold mb-4 animate-on-scroll fade-in-up" style="transition-delay: 220ms;">
-            <span id="typed" class="typed-headline"></span>
-          </h2>
-          <p class="text-lg md:text-xl text-slate-600 max-w-xl mx-auto md:mx-0 mb-8 animate-on-scroll fade-in-up" style="transition-delay: 300ms;">
-            Conecto el potencial de las personas con los objetivos del negocio. Me especializo en <strong class="font-semibold">diagnosticar</strong> necesidades y <strong class="font-semibold">diseñar</strong> estrategias para <strong class="font-semibold">fortalecer</strong> culturas de trabajo que impulsan el crecimiento, la eficiencia y el éxito sostenible.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start animate-on-scroll fade-in-up" style="transition-delay: 450ms;">
-            <a id="cta" href="#contacto" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 magnetic-btn neon-glow">
-              Ponerse en contacto
+      </section>
+
+      <section class="profile-section section" id="sobre-mi" aria-labelledby="profile-title">
+        <div class="container profile-grid">
+          <div data-reveal>
+            <p class="section-number">01 — Perfil</p>
+            <h2 id="profile-title">La gestión de personas como ventaja organizacional</h2>
+          </div>
+          <div class="profile-copy" data-reveal>
+            <p>
+              Entiendo Recursos Humanos como un socio del negocio: una función que escucha, ordena información,
+              anticipa necesidades y convierte problemas complejos en procesos sostenibles.
+            </p>
+            <p>
+              Mi experiencia abarca administración de personal, nómina y beneficios, reclutamiento,
+              capacitación, relaciones laborales y análisis de indicadores. Trabajo con foco en el cumplimiento,
+              la mejora continua y una comunicación que genere confianza.
+            </p>
+            <div class="principles-grid">
+              <article><span>01</span><h3>Escuchar</h3><p>Comprender antes de proponer.</p></article>
+              <article><span>02</span><h3>Ordenar</h3><p>Procesos claros y trazables.</p></article>
+              <article><span>03</span><h3>Medir</h3><p>Datos que orienten decisiones.</p></article>
+              <article><span>04</span><h3>Acompañar</h3><p>Soluciones aplicables y humanas.</p></article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="experience-section section" id="experiencia" aria-labelledby="experience-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="section-number section-number-light">02 — Trayectoria</p>
+            <h2 id="experience-title">Experiencia profesional</h2>
+            <p>Responsabilidades y resultados destacados a lo largo de mi recorrido.</p>
+          </div>
+
+          <div class="experience-list">
+            <details class="experience-card" open data-reveal>
+              <summary>
+                <span class="experience-period">oct. 2025 — presente</span>
+                <span class="experience-role"><strong>Atención al cliente</strong><em>La Veneciana</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Atención a clientes durante la temporada alta y suplencias según las necesidades de la empresa.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="experience-card" open data-reveal>
+              <summary>
+                <span class="experience-period">jul. 2023 — feb. 2024</span>
+                <span class="experience-role"><strong>Responsable de Recursos Humanos</strong><em>Dental Brackets</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Dirigí la gestión integral de RR. HH. para más de 200 empleados: nómina, beneficios y cumplimiento.</li>
+                  <li>Coordiné el reclutamiento end-to-end: publicaciones, clasificación de CV, entrevistas y presentación de candidatos.</li>
+                  <li>Estandaricé legajos y validé novedades de liquidación para reducir errores.</li>
+                  <li>Diseñé programas de formación y capacité equipos para fortalecer habilidades.</li>
+                  <li>Negocié y resolví conflictos, articulando con sindicatos y proveedores de ART.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="experience-card" data-reveal>
+              <summary>
+                <span class="experience-period">sept. 2022 — jul. 2023</span>
+                <span class="experience-role"><strong>Analista de RR. HH.</strong><em>Priority Home Care</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Planifiqué y coordiné reclutamiento, desde la publicación hasta la selección.</li>
+                  <li>Administré y validé nómina y beneficios, asegurando el cumplimiento normativo.</li>
+                  <li>Analicé datos de dotación para detectar tendencias y recomendar acciones.</li>
+                  <li>Gestioné relaciones laborales y coordiné con Facturación para integrar procesos.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="experience-card" data-reveal>
+              <summary>
+                <span class="experience-period">ene. 2022 — abr. 2022</span>
+                <span class="experience-role"><strong>Generalista de RR. HH.</strong><em>South America Implants</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Diseñé estrategias de RR. HH. alineadas a objetivos y lideré proyectos de adopción tecnológica.</li>
+                  <li>Analicé métricas de desempeño y rotación, diagnostiqué oportunidades y presenté mejoras.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="experience-card" data-reveal>
+              <summary>
+                <span class="experience-period">dic. 2020 — may. 2021</span>
+                <span class="experience-role"><strong>Analista de RR. HH.</strong><em>Country Golf El Sosiego</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Administré y sistematicé legajos, novedades de liquidación e indicadores.</li>
+                  <li>Planifiqué reclutamiento, coordiné onboarding y documenté cada etapa.</li>
+                  <li>Gestioné conflictos y promoví una cultura laboral positiva.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="experience-card" data-reveal>
+              <summary>
+                <span class="experience-period">mar. 2015 — dic. 2019</span>
+                <span class="experience-role"><strong>Capacitador</strong><em>La Veneciana</em></span>
+                <span class="summary-action" aria-hidden="true"></span>
+              </summary>
+              <div class="experience-body">
+                <ul>
+                  <li>Entrené a nuevos ingresos en atención al cliente y preparación de productos.</li>
+                  <li>Atendí consultas y reclamos de manera presencial y telefónica.</li>
+                  <li>Armé y verifiqué pedidos, atendí el salón y aseguré el cumplimiento de normas de higiene.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section section" id="competencias" aria-labelledby="skills-title">
+        <div class="container">
+          <div class="section-heading section-heading-dark" data-reveal>
+            <p class="section-number">03 — Capacidades</p>
+            <h2 id="skills-title">Competencias que conectan personas y operación</h2>
+          </div>
+
+          <div class="skills-grid">
+            <article data-reveal>
+              <p class="skill-index">A</p>
+              <h3>Gestión de talento</h3>
+              <ul>
+                <li>Reclutamiento y selección</li>
+                <li>Onboarding y capacitación</li>
+                <li>Clima y cultura</li>
+                <li>Resolución de conflictos</li>
+              </ul>
+            </article>
+            <article data-reveal>
+              <p class="skill-index">B</p>
+              <h3>Administración laboral</h3>
+              <ul>
+                <li>Nómina y beneficios</li>
+                <li>Legajos y novedades</li>
+                <li>Legislación laboral</li>
+                <li>Tango Gestión</li>
+              </ul>
+            </article>
+            <article data-reveal>
+              <p class="skill-index">C</p>
+              <h3>Análisis y mejora</h3>
+              <ul>
+                <li>Excel avanzado</li>
+                <li>Indicadores de RR. HH.</li>
+                <li>Análisis de dotación</li>
+                <li>Optimización de procesos</li>
+              </ul>
+            </article>
+            <article data-reveal>
+              <p class="skill-index">D</p>
+              <h3>Comunicación</h3>
+              <ul>
+                <li>Negociación</li>
+                <li>Liderazgo</li>
+                <li>Marketing digital</li>
+                <li>Inglés B2</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="education-section section" id="formacion" aria-labelledby="education-title">
+        <div class="container education-layout">
+          <div class="education-heading" data-reveal>
+            <p class="section-number">04 — Formación</p>
+            <h2 id="education-title">Aprendizaje aplicado a la gestión</h2>
+          </div>
+          <div class="education-list">
+            <article data-reveal>
+              <time>2014 — 2023</time>
+              <div><h3>Licenciatura en Relaciones Laborales</h3><p>Universidad Nacional de Lomas de Zamora</p></div>
+            </article>
+            <article data-reveal>
+              <time>2023 — 2024</time>
+              <div><h3>Diplomatura en Marketing Digital</h3><p>Academia Numen</p></div>
+            </article>
+            <article data-reveal>
+              <time>2018 — 2019</time>
+              <div><h3>Excel Avanzado</h3><p>Instituto Argentino de Computación</p></div>
+            </article>
+            <article data-reveal>
+              <time>2014 — 2015</time>
+              <div><h3>Liquidación de Sueldos</h3><p>Universidad Nacional de Lanús</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section section" id="contacto" aria-labelledby="contact-title">
+        <div class="container contact-card" data-reveal>
+          <p class="section-number section-number-light">05 — Contacto</p>
+          <h2 id="contact-title">¿Tu organización necesita convertir desafíos de personas en mejores procesos?</h2>
+          <p>Estoy abierto a conversar sobre oportunidades donde pueda aportar experiencia, criterio y capacidad de ejecución.</p>
+          <div class="contact-actions">
+            <a
+              class="button button-light"
+              href="mailto:candilmartinalonso@gmail.com?subject=Oportunidad%20laboral"
+            >
+              candilmartinalonso@gmail.com <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/martinalonsocandil/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
-        <div class="flex justify-center items-center animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-          <div class="relative tilt">
-            <div class="absolute -inset-2 bg-gradient-to-br from-teal-200 to-emerald-400 rounded-full blur-xl opacity-50 animate-pulse"></div>
-            <img src="Foto cara.jpg" alt="Foto de perfil de Martín Alonso Candil" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white profile-image-pulse">
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ===== Sección Sobre Mí ===== -->
-    <section id="sobre" class="py-24">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="section-title text-3xl font-bold text-slate-900 mb-4 animate-on-scroll fade-in-up mx-auto">Sobre Mí</h2>
-        <p class="text-lg text-slate-600 leading-relaxed animate-on-scroll fade-in-up" style="transition-delay: 200ms;">
-          Soy un profesional de las Relaciones Laborales convencido de que el éxito de una empresa reside en su gente. Actúo como un socio estratégico que alinea el capital humano con la visión del negocio. Mi especialidad es <strong class="font-semibold">diseñar</strong> y ejecutar estrategias para <strong class="font-semibold">optimizar</strong> el ciclo de vida completo del empleado. Trabajo para <strong class="font-semibold">generar</strong> un impacto medible, desde la atracción del mejor talento hasta <strong class="font-semibold">establecer</strong> un clima laboral positivo y productivo. Mi misión es <strong class="font-semibold">transformar</strong> organizaciones en entornos donde el talento florece, la eficiencia se <strong class="font-semibold">garantiza</strong> y los resultados de negocio se superan de forma consistente.
-        </p>
-      </div>
-    </section>
-    <!-- ===== Sección Experiencia ===== -->
-    <section id="experiencia" class="py-24 bg-slate-100/70 rounded-2xl">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title text-3xl font-bold text-slate-900 mb-12 text-center animate-on-scroll fade-in-up mx-auto">Experiencia Profesional</h2>
-            <div>
-                <!-- Experiencia Nueva: La Veneciana -->
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">oct. 2025 - presente</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Atención al cliente</h3>
-                    <p class="text-slate-500 italic mb-3">La Veneciana</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Atención a clientes durante la temporada alta y suplencias varias a requerimiento de la empresa.</li>
-                    </ul>
-                </div>
-                <!-- Experiencia 1: Dental Brackets -->
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">jul. 2023 - feb. 2024</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Responsable de recursos humanos</h3>
-                    <p class="text-slate-500 italic mb-3">Dental Brackets</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Dirigí la gestión integral de RRHH para 200+ empleados: administré nómina/beneficios y aseguré el cumplimiento.</li>
-                        <li style="--li-index: 2;">Coordiné y optimicé el reclutamiento end-to-end: planifiqué publicaciones, clasifiqué CV, entrevisté y presenté shortlists.</li>
-                        <li style="--li-index: 3;">Estandaricé y documenté legajos; registré y validé novedades de liquidación para reducir errores.</li>
-                        <li style="--li-index: 4;">Diseñé e implementé programas de formación; capacité y motivé equipos para fortalecer habilidades.</li>
-                        <li style="--li-index: 5;">Negocié y resolví conflictos, consolidando relaciones laborales con sindicatos y proveedores (ART).</li>
-                    </ul>
-                </div>
-                <!-- Experiencia 2: Priority Home Care -->
-                <div class="timeline-item animate-on-scroll slide-in-right tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">sept. 2022 - jul. 2023</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Analista de RR. HH.</h3>
-                    <p class="text-slate-500 italic mb-3">Priority Home Care</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Planifiqué y coordiné el reclutamiento: publiqué avisos, clasifiqué CV, entrevisté y seleccioné candidatos.</li>
-                        <li style="--li-index: 2;">Administré y validé nómina y beneficios; aseguré el cumplimiento normativo.</li>
-                        <li style="--li-index: 3;">Analicé e interpreté datos de dotación para detectar tendencias y recomendar acciones.</li>
-                        <li style="--li-index: 4;">Gestioné relaciones laborales y resolví conflictos; coordiné con Facturación para integrar procesos.</li>
-                    </ul>
-                </div>
-                <!-- Experiencia 3: South America Implants -->
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">ene. 2022 - abr. 2022</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Generalista de RR. HH.</h3>
-                    <p class="text-slate-500 italic mb-3">South America Implants</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Diseñé e implementé estrategias de RRHH alineadas a objetivos; lideré proyectos de transformación y adopción tecnológica.</li>
-                        <li style="--li-index: 2;">Analicé e interpreté métricas de desempeño y rotación; diagnostiqué oportunidades y presenté mejoras.</li>
-                    </ul>
-                </div>
-                <!-- Experiencia 4: Country Golf El Sosiego -->
-                <div class="timeline-item animate-on-scroll slide-in-right tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">dic. 2020 - may. 2021</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Analista de RR. HH.</h3>
-                    <p class="text-slate-500 italic mb-3">Country Golf El Sosiego</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Administré y sistematicé legajos; registré y validé novedades de liquidación; medí KPIs para optimizar procesos.</li>
-                        <li style="--li-index: 2;">Planifiqué y ejecuté reclutamiento; coordine onboarding y documenté cada etapa.</li>
-                        <li style="--li-index: 3;">Gestioné conflictos y promoví una cultura laboral positiva.</li>
-                    </ul>
-                </div>
-                <!-- Experiencia 5: La Veneciana -->
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">mar. 2015 - dic. 2019</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Capacitador</h3>
-                    <p class="text-slate-500 italic mb-3">La Veneciana</p>
-                    <ul class="list-disc list-outside ml-5 text-slate-600 space-y-2">
-                        <li style="--li-index: 1;">Entrené a nuevos ingresos en atención al cliente y preparación de productos del menú hasta quedar operativos para cualquier sucursal.</li>
-                        <li style="--li-index: 2;">Brindé atención al cliente presencial y telefónica; resolví reclamos con soluciones concretas.</li>
-                        <li style="--li-index: 3;">Armé y verifiqué pedidos para asegurar la satisfacción del cliente.</li>
-                        <li style="--li-index: 4;">Tomé y serví pedidos en salón, garantizando una experiencia cordial.</li>
-                        <li style="--li-index: 5;">Mantuve el espacio ordenado: tareas de limpieza y reposición con cumplimiento de normas de higiene.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== Sección Habilidades ===== -->
-    <section id="habilidades" class="py-24">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="section-title text-3xl font-bold text-slate-900 mb-4 text-center animate-on-scroll fade-in-up mx-auto">Mis Competencias Clave</h2>
-        <p class="text-center text-lg text-slate-600 mb-12 max-w-2xl mx-auto animate-on-scroll fade-in-up" style="transition-delay: 150ms;">
-            Capacidades que me permiten <strong class="font-semibold">analizar</strong>, <strong class="font-semibold">implementar</strong> y <strong class="font-semibold">optimizar</strong> la gestión del capital humano para <strong class="font-semibold">lograr</strong> resultados excepcionales.
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="user-plus" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Reclutamiento</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="scroll-text" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Legislación</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="handshake" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Negociación</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="file-spreadsheet" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Excel Avanzado</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="database" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Tango Gestión</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="monitor-play" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Marketing Digital</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="globe" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Inglés (B2)</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="users" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Resolución de Conflictos</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="message-circle" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Comunicación</h4>
-          </div>
-          <div class="group text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-teal-200 transition-all duration-300 transform hover:-translate-y-1 skill-card animate-on-scroll fade-in-up tilt">
-            <div class="flex items-center justify-center w-16 h-16 mb-4 bg-teal-50 text-teal-600 rounded-full mx-auto transition-all duration-300 group-hover:scale-110 group-hover:bg-teal-100 skill-icon">
-              <i data-lucide="award" class="w-8 h-8"></i>
-            </div>
-            <h4 class="font-semibold text-slate-800">Liderazgo</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ===== Sección Formación ===== -->
-    <section id="formacion" class="py-24 bg-slate-100/70 rounded-2xl">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title text-3xl font-bold text-slate-900 mb-12 text-center animate-on-scroll fade-in-up mx-auto">Formación Académica</h2>
-            <div>
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">2014 - 2023</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Licenciatura en Relaciones Laborales</h3>
-                    <p class="text-slate-500 italic mb-3">Universidad Nacional de Lomas de Zamora</p>
-                    <p class="text-slate-600">Plan de estudios centrado en derecho laboral, negociación colectiva y gestión de recursos humanos. Proyecto final: análisis de políticas de retención de talento.</p>
-                </div>
-                <div class="timeline-item animate-on-scroll slide-in-right tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">2023 - 2024</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Diplomatura en Marketing Digital</h3>
-                    <p class="text-slate-500 italic mb-3">Academia Numen</p>
-                    <p class="text-slate-600">Especialización en campañas en Google Ads y Meta Ads, email marketing y métricas de rendimiento.</p>
-                </div>
-                <div class="timeline-item animate-on-scroll slide-in-left tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">2018 - 2019</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Excel Avanzado</h3>
-                    <p class="text-slate-500 italic mb-3">Instituto Argentino de Computación</p>
-                    <p class="text-slate-600">Dominio de tablas dinámicas, macros y funciones avanzadas aplicadas al análisis de datos de RRHH.</p>
-                </div>
-                <div class="timeline-item animate-on-scroll slide-in-right tilt">
-                    <p class="text-sm text-teal-600 font-medium mb-1">2014 - 2015</p>
-                    <h3 class="text-xl font-semibold text-slate-800">Liquidación de Sueldos</h3>
-                    <p class="text-slate-500 italic mb-3">Universidad Nacional de Lanús</p>
-                    <p class="text-slate-600">Formación práctica en cálculo de nóminas, cargas sociales y gestión de legajos con software Tango Gestión.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ===== Sección Contacto ===== -->
-    <section id="contacto" class="py-24">
-      <div class="max-w-3xl mx-auto text-center bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-slate-100 animate-on-scroll fade-in-up">
-        <h2 class="section-title text-3xl font-bold text-slate-900 mb-4 mx-auto">¿Hablamos?</h2>
-        <p class="text-lg text-slate-600 mb-8">Busco activamente nuevos desafíos donde pueda aplicar mi experiencia para generar un impacto tangible. Si tu organización necesita un especialista capaz de transformar la gestión del talento en una ventaja competitiva, me encantaría conversar sobre cómo podemos alcanzar grandes resultados juntos.</p>
-        <div class="mt-8 flex justify-center items-center">
-            <a href="mailto:candilmartinalonso@gmail.com" class="flex items-center gap-3 text-lg font-semibold text-slate-700 hover:text-teal-600 transition-colors cta-mail">
-                <i data-lucide="mail" class="w-6 h-6 text-teal-600"></i>
-                <span>candilmartinalonso@gmail.com</span>
-            </a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <!-- ===== Pie de Página ===== -->
-  <footer class="border-t border-slate-200">
-    <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" aria-label="LinkedIn" class="text-slate-500 hover:text-teal-600 transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-            <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" aria-label="Instagram" class="text-slate-500 hover:text-teal-600 transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-            <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" aria-label="Facebook" class="text-slate-500 hover:text-teal-600 transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-        </div>
-      <p class="text-sm text-slate-500">&copy; <span id="year"></span> Martín Alonso Candil. Todos los derechos reservados.</p>
-    </div>
-  </footer>
-  <!-- ===== Botón Volver Arriba ===== -->
-  <button id="scrollTopButton" title="Volver arriba" class="fixed bottom-5 right-5 z-50 bg-teal-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-700 transition-all transform scale-0 hover:scale-110">
-    <i data-lucide="arrow-up" class="w-6 h-6"></i>
-  </button>
+      </section>
+    </main>
 
-  <!-- Scripts -->
-  <script>
-    // --- Renderizar Iconos ---
-    lucide.createIcons();
-    
-    // --- Año Actual en Footer ---
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // --- Menú Móvil ---
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
-    
-    mobileMenuButton.addEventListener('click', () => {
-      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.classList.toggle('hidden');
-      menuIconOpen.classList.toggle('hidden');
-      menuIconClose.classList.toggle('hidden');
-    });
-    
-    // --- Botón Volver Arriba ---
-    const scrollTopButton = document.getElementById('scrollTopButton');
-    
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        scrollTopButton.classList.remove('scale-0');
-      } else {
-        scrollTopButton.classList.add('scale-0');
-      }
-    });
-    
-    scrollTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // --- Cerrar menú móvil al hacer clic en un enlace ---
-    document.querySelectorAll('#mobile-menu .nav-link, #hero a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        if(e.currentTarget.getAttribute('href').startsWith('#')) {
-          if (!mobileMenu.classList.contains('hidden')) {
-            mobileMenuButton.click();
-          }
-        }
-      });
-    });
-    
-    // --- Resaltar enlace de navegación activo al hacer scroll ---
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const headerOffset = document.getElementById('header').offsetHeight;
-    
-    const activateNavLink = (id) => {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
-      });
-    };
-    
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) activateNavLink(entry.target.id); });
-    }, { rootMargin: `-${headerOffset}px 0px -40% 0px`, threshold: 0.3 });
-    
-    sections.forEach(section => { if(section.id) navObserver.observe(section); });
-    
-    // --- Intersection Observer para Animaciones al Hacer Scroll ---
-    const animationObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('is-visible')) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-    
-    document.querySelectorAll('.animate-on-scroll').forEach(el => animationObserver.observe(el));
-    
-    // --- Typed headline ---
-    if (typeof Typed !== 'undefined') {
-      new Typed('#typed', {
-        strings: ['RRHH Estratégico', 'Gestión del Talento', 'Clima y Cultura', 'Negociación Colectiva', 'Eficiencia Organizacional'],
-        typeSpeed: 55,
-        backSpeed: 28,
-        backDelay: 1300,
-        loop: true
-      });
-    } else {
-      document.getElementById('typed').innerHTML = 'Experto en RRHH';
-    }
-    
-    // --- Tilt (cards + timeline) ---
-    if (window.VanillaTilt) {
-      VanillaTilt.init(document.querySelectorAll('.tilt, .skill-card'), {
-        max: 6, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02
-      });
-    }
-    
-    // --- Particles background ---
-    if (window.tsParticles) {
-      tsParticles.load('tsparticles', {
-        background: { color: { value: 'transparent' } },
-        fullScreen: { enable: false },
-        style: { position: 'fixed', inset: 0, zIndex: -1 },
-        particles: {
-          number: { value: 40 },
-          color: { value: ['#14b8a6', '#34d399', '#a7f3d0'] },
-          opacity: { value: 0.4 },
-          size: { value: { min: 1, max: 3 } },
-          move: { enable: true, speed: 0.6 },
-          links: { enable: true, distance: 130, opacity: 0.15, color: '#0f766e' }
-        },
-        detectRetina: true
-      });
-    }
-    
-    // --- Scroll progress bar ---
-    const progressBar = document.getElementById('progressBar');
-    
-    const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      progressBar.style.width = progress + '%';
-    };
-    
-    updateProgress();
-    window.addEventListener('scroll', updateProgress);
-    window.addEventListener('resize', updateProgress);
-    
-    // --- Cursor glow follower ---
-    const glow = document.getElementById('cursorGlow');
-    
-    window.addEventListener('pointermove', (e) => {
-      const x = e.clientX - 100;
-      const y = e.clientY - 100;
-      glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-    });
-    
-    // --- Magnetic CTA button ---
-    const cta = document.getElementById('cta');
-    
-    if (cta) {
-      cta.addEventListener('mousemove', function(e) {
-        const rect = cta.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        const rotateY = (x / rect.width) * 10;
-        const rotateX = -(y / rect.height) * 10;
-        
-        cta.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
-      });
-      
-      cta.addEventListener('mouseleave', function() {
-        cta.style.transform = 'rotateY(0deg) rotateX(0deg)';
-      });
-    }
-    
-    // --- Confetti on mail click ---
-    document.querySelector('.cta-mail')?.addEventListener('click', () => {
-      if (window.confetti) {
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.7 } });
-      }
-    });
-  </script>
-</body>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span data-year></span> Martín Alonso Candil</p>
+        <nav aria-label="Redes sociales">
+          <a href="https://www.linkedin.com/in/martinalonsocandil/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/candilmartinalonso/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/MartinAlonsoCandil/" target="_blank" rel="noreferrer">Facebook</a>
+        </nav>
+      </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="Volver arriba" data-back-to-top>
+      <span aria-hidden="true">↑</span>
+    </button>
+  </body>
 </html>
-

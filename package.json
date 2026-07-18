@@ -1,0 +1,16 @@
+{
+  "name": "martin-alonso-candil-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "lint:html": "html-validate index.html public/404.html",
+    "build": "npm run lint:html && vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "html-validate": "11.5.6",
+    "vite": "8.1.5"
+  }
+}
